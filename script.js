@@ -1,3 +1,6 @@
+
+//script to run on browser
+
 document.getElementById('choose-file').addEventListener('click', function () {
     alert('Select file destination dialog would appear here.');
 });

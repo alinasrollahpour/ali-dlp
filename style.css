@@ -6,6 +6,7 @@
     --input-text: #ffffff;
     --button-bg: #424242;
     --button-hover-bg: #ff3333;
+    --button-red-bg: #cc0000;
     --progress-bg: #cc0000;
     --progress-color: #ffffff;
     --border-radius: 10px;
@@ -15,7 +16,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: Consolas, monospace;
 }
 
 body {
@@ -66,6 +67,7 @@ button {
     border: var(--border);
     border-radius: var(--border-radius);
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -124,9 +126,10 @@ input[type="radio"] {
 }
 
 .resolution-group label {
+    font-size: 0.8rem;
     display: inline-block;
-    padding: 10px 20px;
-    margin-right: 10px;
+    padding: 10px 10px;
+    margin: 0;
     background-color: var(--input-bg);
     color: var(--text-color);
     border-radius: var(--border-radius);
@@ -141,7 +144,7 @@ input[type="radio"] {
 
 /* Apply selected state to the label when the radio is checked */
 .resolution-group input[type="radio"]:checked + label {
-    background-color: var(--button-bg);
+    background-color: var(--button-red-bg);
 }
 
 /* Hover effect for the labels */
