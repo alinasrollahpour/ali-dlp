@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a simple web-ui for yt-dlp",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "open": "^10.1.0"
   }
 }
