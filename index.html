@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>ALI DLP</h1>
+
+    <div class="input-group">
+        <input type="text" id="video-url" placeholder="video url">
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="destination" placeholder="save as (select destination)" readonly>
+        <button id="choose-file">📁</button>
+    </div>
+
+    <div class="resolution-group">
+        <p>resolution</p>
+        <label>
+            <input type="radio" name="resolution" value="360p"> 360p
+        </label>
+        <label>
+            <input type="radio" name="resolution" value="480p"> 480p
+        </label>
+        <label>
+            <input type="radio" name="resolution" value="720p"> 720p
+        </label>
+        <label>
+            <input type="radio" name="resolution" value="1080p"> 1080p
+        </label>
+    </div>
+
+    <button id="start-download">start download</button>
+
+    <div class="meta-data">
+        <p>Meta data:</p>
+        <p>size: 200MB</p>
+        <p>video name: bluh</p>
+    </div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        <p id="progress-text">progress: 32%</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

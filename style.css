@@ -1,0 +1,114 @@
+:root {
+    --bg-color: #2c2c2c;
+    --text-color: #ffffff;
+    --input-bg: #404040;
+    --input-text: #ffffff;
+    --button-bg: #cc0000;
+    --button-hover-bg: #ff3333;
+    --progress-bg: #cc0000;
+    --progress-color: #ffffff;
+    --border-radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #3c3c3c;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 350px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.resolution-group {
+    margin: 15px 0;
+}
+
+.resolution-group p {
+    margin-bottom: 10px;
+}
+
+label {
+    margin-right: 15px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#start-download {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--button-bg);
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
+.meta-data {
+    margin: 15px 0;
+}
+
+.progress-bar-container {
+    background-color: var(--input-bg);
+    border-radius: var(--border-radius);
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 32%;
+    height: 20px;
+    background-color: var(--progress-bg);
+    border-radius: var(--border-radius);
+}
+
+#progress-text {
+    color: var(--progress-color);
+    margin-top: 5px;
+}
