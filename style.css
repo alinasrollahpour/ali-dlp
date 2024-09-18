@@ -4,7 +4,7 @@
     --text-color: #ffffff;
     --input-bg: #404040;
     --input-text: #ffffff;
-    --button-bg: #cc0000;
+    --button-bg: #424242;
     --button-hover-bg: #ff3333;
     --progress-bg: #cc0000;
     --progress-color: #ffffff;
@@ -63,7 +63,7 @@ button {
     padding: 10px;
     background-color: var(--button-bg);
     color: var(--text-color);
-    border: none;
+    border: var(--border);
     border-radius: var(--border-radius);
     cursor: pointer;
 }
@@ -89,11 +89,15 @@ input[type="radio"] {
 }
 
 #start-download {
+    font-size: 1.3rem;
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     background-color: var(--button-bg);
     border-radius: var(--border-radius);
-    margin-top: 20px;
+    margin-top: 5px;
+}
+#start-download:hover {
+    background-color: var(--button-hover-bg);
 }
 
 .meta-data {
@@ -145,3 +149,8 @@ input[type="radio"] {
     background-color: var(--button-hover-bg);
 }
 
+.resolution-group label {
+    border: var(--border);
+    margin: 10px 2px;
+    padding: 10px 15px;
+}
