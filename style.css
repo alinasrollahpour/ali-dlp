@@ -1,4 +1,5 @@
 :root {
+    --border: solid 1px gray;
     --bg-color: #2c2c2c;
     --text-color: #ffffff;
     --input-bg: #404040;
@@ -27,6 +28,7 @@ body {
 }
 
 .container {
+    border: var(--border);
     background-color: #3c3c3c;
     padding: 20px;
     border-radius: var(--border-radius);
@@ -44,13 +46,17 @@ h1 {
 }
 
 input[type="text"] {
+    border: var(--border);
     width: 80%;
     padding: 10px;
-    border: none;
     border-radius: var(--border-radius);
     background-color: var(--input-bg);
     color: var(--input-text);
     margin-right: 10px;
+}
+
+#video-url {
+    width: 95%;
 }
 
 button {
@@ -112,3 +118,30 @@ input[type="radio"] {
     color: var(--progress-color);
     margin-top: 5px;
 }
+
+.resolution-group label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hide the radio input */
+.resolution-group input[type="radio"] {
+    display: none;
+}
+
+/* Apply selected state to the label when the radio is checked */
+.resolution-group input[type="radio"]:checked + label {
+    background-color: var(--button-bg);
+}
+
+/* Hover effect for the labels */
+.resolution-group label:hover {
+    background-color: var(--button-hover-bg);
+}
+

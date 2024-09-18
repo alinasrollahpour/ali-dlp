@@ -8,32 +8,32 @@
 </head>
 <body>
 <div class="container">
-    <h1>ALI DLP</h1>
+    <h1>ali-dlp</h1>
 
-    <div class="input-group">
+    <div class="input-group" id="url-input">
         <input type="text" id="video-url" placeholder="video url">
     </div>
 
-    <div class="input-group">
+    <div class="input-group" id="file-input">
         <input type="text" id="destination" placeholder="save as (select destination)" readonly>
         <button id="choose-file">📁</button>
     </div>
 
     <div class="resolution-group">
         <p>resolution</p>
-        <label>
-            <input type="radio" name="resolution" value="360p"> 360p
-        </label>
-        <label>
-            <input type="radio" name="resolution" value="480p"> 480p
-        </label>
-        <label>
-            <input type="radio" name="resolution" value="720p"> 720p
-        </label>
-        <label>
-            <input type="radio" name="resolution" value="1080p"> 1080p
-        </label>
+        <input type="radio" id="res360" name="resolution" value="360p">
+        <label for="res360">360p</label>
+
+        <input type="radio" id="res480" name="resolution" value="480p">
+        <label for="res480">480p</label>
+
+        <input type="radio" id="res720" name="resolution" value="720p">
+        <label for="res720">720p</label>
+
+        <input type="radio" id="res1080" name="resolution" value="1080p">
+        <label for="res1080">1080p</label>
     </div>
+
 
     <button id="start-download">start download</button>
 
