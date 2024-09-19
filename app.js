@@ -27,7 +27,9 @@ const port = 8086;
 const defaultResolution = "1080";
 
 //globals
-
+let status = "none"; // can be: none - downloading - finished
+let progress = NaN; // 0.0 to 100.0
+let progressLog = ""; // like: [download]   3.7% of ~247.43MiB at  1.15MiB/s ETA 03:29
 
 open(`http://localhost:${port}`).then(
     () => console.log(`I tried to open on port ${port}`),
@@ -39,6 +41,14 @@ app.use(express.json());
 
 app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname, './index.html'));
+})
+
+//get current status from frontend
+app.get('/status', (req, res) => {
+    console.log('i sent /status to front: ' + status + progress + progressLog)
+    return res.status(200).json({
+        status, progress, progressLog
+    });
 })
 
 /**
@@ -78,24 +88,29 @@ app.post('/download', (req, res) => {
 
     // Track real-time download progress
     ytDlpProcess.stdout.on('data', (data) => {
+
         const output = data.toString();
         console.log("\n" + output);
-        const progressData = parseYtDlpOutput(output);
+        const progressFloat = outputToFloat(output);
 
-        if (progressData) {
-            console.log(`>>>data parsed with parseYtDlpOutput: ${progressData.progress}`);
-            // Here you can emit progress to a frontend via WebSocket or similar
+
+        status = "downloading";
+        progressLog = output;
+        if (progressFloat) {
             //set the global var progress to value
+            progress = progressFloat;
+        } else {
+            progress = NaN;
         }
     });
 
 
     ytDlpProcess.on('close', (code) => {
         if (code === 0) {
-            console.log('[ytDlpProcess]Download completed successfully.');
-            res.send('[ytDlpProcess]Download completed');
+            console.log('>>> Download completed successfully.');
+            res.send('Download completed');
         } else {
-            console.error(`[ytDlpProcess] yt-dlp exited with code ${code}`);
+            console.error(`>>> yt-dlp exited with code ${code}`);
             res.status(500).send('Download failed');
         }
     });
@@ -105,16 +120,14 @@ app.post('/download', (req, res) => {
  * Function to parse yt-dlp output and extract progress.
  * @param {string} output
  */
-function parseYtDlpOutput(output) {
+function outputToFloat(output) {
     // Example of yt-dlp progress output:
     // [download]   3.7% of ~247.43MiB at  1.15MiB/s ETA 03:29
     const progressRegex = /\[download\]\s+([\d.]+)%/;
     const match = output.match(progressRegex);
 
     if (match) {
-        return {
-            progress: match[1] + '%'
-        };
+        return parseFloat(match[1])
     }
     return null;
 }
