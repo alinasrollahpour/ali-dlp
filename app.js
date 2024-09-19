@@ -26,6 +26,9 @@ const __dirname = path.dirname(__filename);
 const port = 8086;
 const defaultResolution = "1080";
 
+//globals
+
+
 open(`http://localhost:${port}`).then(
     () => console.log(`I tried to open on port ${port}`),
 );
@@ -74,16 +77,18 @@ app.post('/download', (req, res) => {
     console.log('now i have spawned yt-dlp subprocess!');
 
     // Track real-time download progress
-    ytDlpProcess.stderr.on('data', (data) => {
+    ytDlpProcess.stdout.on('data', (data) => {
         const output = data.toString();
-        console.log("i have just logging 'data' :> " + output); //dev temp
+        console.log("\n" + output);
         const progressData = parseYtDlpOutput(output);
 
         if (progressData) {
-            console.log(`i log progress based on 'data' event: ${progressData.progress}`);
+            console.log(`>>>data parsed with parseYtDlpOutput: ${progressData.progress}`);
             // Here you can emit progress to a frontend via WebSocket or similar
+            //set the global var progress to value
         }
     });
+
 
     ytDlpProcess.on('close', (code) => {
         if (code === 0) {
