@@ -2,7 +2,7 @@
   "name": "ali-dlp",
   "version": "1.0.0",
   "description": "a simple web-ui for yt-dlp",
-  "main": "script.js",
+  "main": "public/script.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.0",
+    "node-file-dialog": "^1.0.3",
     "open": "^10.1.0"
   }
 }

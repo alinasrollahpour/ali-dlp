@@ -4,33 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloader UI</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <div class="container">
     <h1>ali-dlp</h1>
 
-    <div class="input-group" id="url-input">
-        <input type="text" id="video-url" placeholder="video url">
-    </div>
 
-    <div class="input-group" id="file-input">
-        <input type="text" id="destination" placeholder="save as (select destination)" readonly>
-        <button id="choose-file">📁</button>
-    </div>
+    <input type="text" id="video-url" placeholder="video url">
+
 
     <div class="resolution-group">
-        <input type="radio" id="res360" name="resolution" value="360p">
+        <input type="radio" id="res360" name="resolution" value="360">
         <label for="res360">360p</label>
 
-        <input type="radio" id="res480" name="resolution" value="480p">
+        <input type="radio" id="res480" name="resolution" value="480">
         <label for="res480">480p</label>
 
-        <input type="radio" id="res720" name="resolution" value="720p">
+        <input type="radio" id="res720" name="resolution" value="720">
         <label for="res720">720p</label>
 
-        <input type="radio" id="res1080" name="resolution" value="1080p">
+        <input type="radio" id="res1080" name="resolution" value="1080">
         <label for="res1080">1080p</label>
+
+        <input type="radio" id="res2160" name="resolution" value="2160">
+        <label for="res2160">4k</label>
     </div>
 
 
@@ -42,12 +40,14 @@
         <p>video name: bluh</p>
     </div>
 
+    <p id="progress-text">progress: 32%</p>
+
     <div class="progress-bar-container">
         <div class="progress-bar" id="progress-bar"></div>
-        <p id="progress-text">progress: 32%</p>
+
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>

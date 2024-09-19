@@ -28,6 +28,27 @@ body {
     height: 100vh;
 }
 
+.progress-bar-container {
+    margin-top: 15px;
+    border-radius: 50px;
+    background-color: gray;
+    width: 100%;
+    height: 4px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.progress-bar {
+    position: relative;
+    background-color: var(--button-red-bg);
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    width: 36%;
+    height: 100%;
+}
+
 .container {
     border: var(--border);
     background-color: #3c3c3c;
@@ -41,7 +62,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-.input-group {
+#video-url {
+    margin: 0;
+    width: 100%;
     margin-bottom: 15px;
     display: flex;
 }
@@ -56,9 +79,7 @@ input[type="text"] {
     margin-right: 10px;
 }
 
-#video-url {
-    width: 95%;
-}
+
 
 button {
     padding: 10px;
@@ -75,6 +96,8 @@ button:hover {
 }
 
 .resolution-group {
+    display: flex;
+    justify-content: space-between;
     margin: 15px 0;
 }
 
@@ -97,6 +120,7 @@ input[type="radio"] {
     background-color: var(--button-bg);
     border-radius: var(--border-radius);
     margin-top: 5px;
+    border-color: var(--button-hover-bg);
 }
 #start-download:hover {
     background-color: var(--button-hover-bg);
@@ -106,19 +130,6 @@ input[type="radio"] {
     margin: 15px 0;
 }
 
-.progress-bar-container {
-    background-color: var(--input-bg);
-    border-radius: var(--border-radius);
-    padding: 5px;
-    margin-top: 10px;
-}
-
-.progress-bar {
-    width: 32%;
-    height: 20px;
-    background-color: var(--progress-bg);
-    border-radius: var(--border-radius);
-}
 
 #progress-text {
     color: var(--progress-color);
