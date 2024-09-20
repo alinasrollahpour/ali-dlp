@@ -2,7 +2,8 @@
 //script to run on browser
 
 //globals
-
+let lastStatus;
+let statusBar = document.querySelector('#status-bar');
 
 //run whole script after load completed
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,11 +37,25 @@ async function updateStatus() {
     const data = await response.json();
     const {status, progress, progressLog} = data;
 
+    //to prevent overhead of useless updates
+    if (status !== lastStatus) {
+        lastStatus = status;
+        if (status === 'downloading') {
+            statusBar.innerHTML = 'is downloading...';
+            updateProgress(progress)
+        } else if (status === 'none') {
+            statusBar.innerHTML = 'ready to download!';
+        } else if (status === 'finished') {
+            statusBar.innerHTML = 'download finished successfully!';
+        } else{
+            statusBar.innerHTML = 'invalid status: ' + status;
+        }
+    }
 
 
-    updateProgress(progress)
 }
 
-function updateProgress() {
-
+//arg: progress: a float bet. 0.0 and 1
+function updateProgress(progress) {
+//todo
 }
