@@ -9,7 +9,8 @@
     --button-red-bg: #cc0000;
     --progress-bg: #cc0000;
     --progress-color: #ffffff;
-    --border-radius: 10px;
+    --border-radius: 0px;
+    --box-shadow: 2px 4px black;
 }
 
 * {
@@ -28,9 +29,11 @@ body {
     height: 100vh;
 }
 
+
+
 .progress-bar-container {
     margin-top: 15px;
-    border-radius: 50px;
+    border-radius: 0px;
     background-color: gray;
     width: 100%;
     height: 4px;
@@ -50,12 +53,13 @@ body {
 }
 
 .container {
-    border: var(--border);
+    border: none;
     background-color: #3c3c3c;
     padding: 20px;
     border-radius: var(--border-radius);
     width: 350px;
     text-align: center;
+    box-shadow: 4px 6px black;
 }
 
 h1 {
@@ -67,6 +71,14 @@ h1 {
     width: 100%;
     margin-bottom: 15px;
     display: flex;
+}
+#video-url:hover {
+    border-color: var(--button-red-bg);
+}
+#video-url:focus {
+    border-color: var(--button-red-bg);
+    box-shadow: var(--box-shadow);
+    outline: none;
 }
 
 input[type="text"] {
@@ -85,10 +97,10 @@ button {
     padding: 10px;
     background-color: var(--button-bg);
     color: var(--text-color);
-    border: var(--border);
+    border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: 0.3s;
+    box-shadow: var(--box-shadow);
 }
 
 button:hover {
@@ -118,12 +130,18 @@ input[type="radio"] {
     width: 100%;
     padding: 10px;
     background-color: var(--button-bg);
-    border-radius: var(--border-radius);
+    border-radius: 0;
     margin-top: 5px;
     border-color: var(--button-hover-bg);
+    box-shadow: var(--box-shadow);
 }
 #start-download:hover {
     background-color: var(--button-hover-bg);
+    box-shadow: 4px 6px black;
+}
+#start-download:active {
+    background-color: var(--button-red-bg);
+    box-shadow: 1px 1px black;
 }
 
 .meta-data {
@@ -136,6 +154,15 @@ input[type="radio"] {
     margin-top: 5px;
 }
 
+.console {
+    width: 300px;
+    height: 400px;
+    margin: 15px;
+    padding: 10px;
+    background-color: black;
+
+}
+
 .resolution-group label {
     font-size: 0.8rem;
     display: inline-block;
@@ -145,7 +172,6 @@ input[type="radio"] {
     color: var(--text-color);
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 /* Hide the radio input */
@@ -156,6 +182,8 @@ input[type="radio"] {
 /* Apply selected state to the label when the radio is checked */
 .resolution-group input[type="radio"]:checked + label {
     background-color: var(--button-red-bg);
+    border: none;
+    box-shadow: var(--box-shadow);
 }
 
 /* Hover effect for the labels */

@@ -6,7 +6,6 @@
 //  POST:
 //  {
 //      url: "example yt url",
-//      file: "/path/to/file.mp4",
 //      resolution: "1080"
 //  }
 
@@ -17,8 +16,6 @@ import {spawn} from 'child_process';
 import express from 'express';
 import open from 'open';
 import path from 'path';
-import dialog from 'node-file-dialog';
-const {saveFileDialog} = dialog;
 
 const app = express();
 const __filename = import.meta.filename;
@@ -57,15 +54,19 @@ app.get('/status', (req, res) => {
  */
 app.post('/download', (req, res) => {
 
+    console.log("req.body: " + JSON.stringify(req.body));
     const videoUrl = req.body.url;
     let resolution = req.body.resolution;
     if (resolution == null || resolution === "") { resolution = defaultResolution}
 
+    console.log("### a POST request on /download");
     console.log(`i extracted req.body... : ${videoUrl} ${resolution}`);
 
+    //answer POST request
     if (!videoUrl) {
-        return res.status(400).json({ok:false, message:'url and file are required'});
+        return res.status(400).json({ok:false, message:'url required'});
     }
+    res.status(200).json({ok:true, message:"download has started"});
 
     //make up args for yt-dlp
     //yt-dlp -f "bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4][height<=1080]"
@@ -84,7 +85,7 @@ app.post('/download', (req, res) => {
 
     // Spawn yt-dlp process
     const ytDlpProcess = spawn('yt-dlp', ytDlpArgs);
-    console.log('now i have spawned yt-dlp subprocess!');
+    console.log('>>> now i have spawned yt-dlp subprocess!');
 
     // Track real-time download progress
     ytDlpProcess.stdout.on('data', (data) => {
@@ -108,10 +109,10 @@ app.post('/download', (req, res) => {
     ytDlpProcess.on('close', (code) => {
         if (code === 0) {
             console.log('>>> Download completed successfully.');
-            res.send('Download completed');
+            status = 'finished';
         } else {
             console.error(`>>> yt-dlp exited with code ${code}`);
-            res.status(500).send('Download failed');
+            status = 'none';
         }
     });
 });
